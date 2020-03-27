@@ -1,4 +1,4 @@
-const connection = require("./database/connection");
+const connection = require("../database/connection");
 const crypto = require("crypto");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
     const { name, email, whatsapp, city, uf } = req.body;
     const id = crypto.randomBytes(4).toString("HEX");
 
-    connection("ongs").insert({
+    await connection("ongs").insert({
       id,
       name,
       email,
@@ -15,7 +15,7 @@ module.exports = {
       uf
     });
 
-    return res.json(id);
+    return res.json({ id });
   },
   async index(req, res) {
     const ongs = await connection("ongs").select("*");

@@ -11,11 +11,11 @@ const routes = express.Router();
 routes.get("/ongs", OngController.index);
 routes.post("/ongs", OngController.create);
 
-routes.post("/incidents", IncidentsController.create);
+routes.post("/incidents", IncidentController.create);
 routes.get("incidents", IncidentController.index);
 routes.delete("/incidents/:id", IncidentController.delete);
 
-routes.get("profile", ProfileController.index);
+routes.get("/profile", ProfileController.index);
 
 routes.post("/sessions", SessionController.login);
 module.exports = routes;
